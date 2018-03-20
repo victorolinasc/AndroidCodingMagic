@@ -1,6 +1,5 @@
 package br.com.concrete.victorolinasc.autoinit
 
-import android.app.Application
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.database.Cursor

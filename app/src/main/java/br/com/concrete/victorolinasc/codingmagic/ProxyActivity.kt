@@ -7,21 +7,28 @@ import android.widget.EditText
 import br.com.concrete.victorolinasc.proxy.GreeterProxy
 import kotterknife.bindView
 
+/**
+ * PURE Interface that will be dynamically implemented.
+ */
 interface Greeter {
+
     fun hello(name: String)
 
     fun howdy(name: String)
 }
 
+
 class ProxyActivity : AppCompatActivity() {
 
-    // Views
-    val greeterName by bindView<EditText>(R.id.greeter_name)
-    val helloClick by bindView<Button>(R.id.hello_click)
-    val howdyClick by bindView<Button>(R.id.howdy_click)
+    // greeter edit field
+    private val greeterName by bindView<EditText>(R.id.greeter_name)
+
+    // Buttons
+    private val helloClick by bindView<Button>(R.id.hello_click)
+    private val howdyClick by bindView<Button>(R.id.howdy_click)
 
     // Proxy
-    val proxy = GreeterProxy.createGreeter(Greeter::class.java, this)
+    private val proxy = GreeterProxy.createGreeter(Greeter::class.java, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

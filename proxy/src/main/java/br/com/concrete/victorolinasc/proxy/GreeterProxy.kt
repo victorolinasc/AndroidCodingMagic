@@ -10,6 +10,8 @@ object GreeterProxy {
 
         if (!greeterApi.isInterface) throw IllegalArgumentException("Must be an interface!!")
 
+        // Other validations
+
         @Suppress("UNCHECKED_CAST")
         return Proxy.newProxyInstance(
                 greeterApi.classLoader,
@@ -23,7 +25,7 @@ object GreeterProxy {
 
             Toast.makeText(
                     currentContext,
-                    "${method.name.capitalize()} ${args[0] as String}",
+                    "${method.name.capitalize()} ${args[0]}",
                     Toast.LENGTH_LONG
             ).show()
 
