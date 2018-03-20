@@ -25,7 +25,7 @@ class ProxyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_proxy)
 
         helloClick.setOnClickListener {
             // Calling "hello" method in the proxy

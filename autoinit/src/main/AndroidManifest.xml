@@ -1,3 +1,12 @@
-<manifest package="br.com.concrete.victorolinasc.autoinit">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.concrete.victorolinasc.autoinit">
+
+    <application>
+        <provider
+            android:name=".AutoInitProvider"
+            android:authorities="${applicationId}.autoinitprovider"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
 
 </manifest>
