@@ -1,0 +1,1 @@
+include ':app', ':proxy', ':autoinit', ':fulllifecycle', ':crashreport'

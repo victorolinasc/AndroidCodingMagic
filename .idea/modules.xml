@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CodingMagic.iml" filepath="$PROJECT_DIR$/CodingMagic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autoinit/autoinit.iml" filepath="$PROJECT_DIR$/autoinit/autoinit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crashreport/crashreport.iml" filepath="$PROJECT_DIR$/crashreport/crashreport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fulllifecycle/fulllifecycle.iml" filepath="$PROJECT_DIR$/fulllifecycle/fulllifecycle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proxy/proxy.iml" filepath="$PROJECT_DIR$/proxy/proxy.iml" />
+    </modules>
+  </component>
+</project>
