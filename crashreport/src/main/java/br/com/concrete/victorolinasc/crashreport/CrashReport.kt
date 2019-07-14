@@ -6,10 +6,7 @@ import com.orhanobut.hawk.Hawk
 object CrashReport {
 
     fun init(app: Application) {
-
         Hawk.init(app).build()
-
-        // Thread is important here!
         Thread.setDefaultUncaughtExceptionHandler(CrashReportHandler())
     }
 }

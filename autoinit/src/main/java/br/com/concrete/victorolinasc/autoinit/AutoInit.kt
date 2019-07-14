@@ -26,6 +26,6 @@ object AutoInit {
     }
 
     fun appToast(msg: String) {
-        Toast.makeText(appRef.get(), msg, Toast.LENGTH_LONG).show()
+        Toast.makeText(FullcycleProvider.getCurrentActivity(), msg, Toast.LENGTH_LONG).show()
     }
 }

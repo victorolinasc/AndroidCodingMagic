@@ -28,7 +28,7 @@ class ProxyActivity : AppCompatActivity() {
     private val howdyClick by bindView<Button>(R.id.howdy_click)
 
     // Proxy
-    private val proxy = GreeterProxy.createGreeter(Greeter::class.java, this)
+    private val proxy = GreeterProxy.create(Greeter::class.java, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

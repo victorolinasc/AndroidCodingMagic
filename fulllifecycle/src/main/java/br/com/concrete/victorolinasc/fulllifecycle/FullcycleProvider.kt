@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentManager
 import android.util.Log
 import java.lang.ref.WeakReference
 
@@ -26,50 +27,50 @@ object FullcycleProvider {
 
         val app = ctx.applicationContext as Application
 
-        app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+        app.registerActivityLifecycleCallbacks(
+                object : Application.ActivityLifecycleCallbacks {
 
-            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                Log.d(TAG, "${activity.javaClass.canonicalName}.onActivityCreated()")
+                    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                        Log.d(TAG, "${activity.localClassName}.onActivityCreated")
 
-                // AHMAGAD... A static context????
-                currentActivityRef = WeakReference(activity)
+                        currentActivityRef = WeakReference(activity)
 
-                if (activity is FragmentActivity) {
-                    activity.supportFragmentManager.registerFragmentLifecycleCallbacks(
+                        if (activity is FragmentActivity) {
 
-                            object : android.support.v4.app.FragmentManager.FragmentLifecycleCallbacks() {
-                                // Fragment lifecycle :)
-                                // Exercise for yourself :)
-                            }, false
-                    )
+                            val manager = activity.supportFragmentManager
+                            manager.registerFragmentLifecycleCallbacks(
+                                    object : FragmentManager.FragmentLifecycleCallbacks() {
+                                        // Exercise :)
+                                    }, true
+                            )
+                        }
+                    }
+
+                    override fun onActivityPaused(activity: Activity) {
+                        Log.d(TAG, "${activity.localClassName}.onActivityPaused")
+                    }
+
+                    override fun onActivityResumed(activity: Activity) {
+                        Log.d(TAG, "${activity.localClassName}.onActivityResumed")
+                    }
+
+                    override fun onActivityStarted(activity: Activity) {
+                        Log.d(TAG, "${activity.localClassName}.onActivityStarted")
+                    }
+
+                    override fun onActivityDestroyed(activity: Activity) {
+                        Log.d(TAG, "${activity.localClassName}.onActivityDestroyed")
+                    }
+
+                    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
+                        Log.d(TAG, "${activity.localClassName}.onActivitySaveInstanceState")
+                    }
+
+                    override fun onActivityStopped(activity: Activity) {
+                        Log.d(TAG, "${activity.localClassName}.onActivityStopped")
+                    }
                 }
-            }
-
-            override fun onActivityPaused(activity: Activity) {
-                Log.d(TAG, "${activity.javaClass.canonicalName}.onActivityPaused()")
-
-            }
-
-            override fun onActivityResumed(activity: Activity) {
-                Log.d(TAG, "${activity.javaClass.canonicalName}.onActivityResumed()")
-            }
-
-            override fun onActivityStarted(activity: Activity) {
-                Log.d(TAG, "${activity.javaClass.canonicalName}.onActivityStarted()")
-            }
-
-            override fun onActivityDestroyed(activity: Activity) {
-                Log.d(TAG, "${activity.javaClass.canonicalName}.onActivityDestroyed()")
-            }
-
-            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
-                Log.d(TAG, "${activity.javaClass.canonicalName}.onActivitySaveInstanceState()")
-            }
-
-            override fun onActivityStopped(activity: Activity) {
-                Log.d(TAG, "${activity.javaClass.canonicalName}.onActivityStopped()")
-            }
-        })
+        )
 
     }
 }
